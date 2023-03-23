@@ -40,6 +40,17 @@ También habrá que completar los scripts que utiliza el árbol de comportamient
 
 Mejor que insertando imágenes, se puede usar Mermaid:
 
+Público:
+```mermaid
+stateDiagram
+    
+    VerEspectáculo --> Salir : La lámpara cae
+    Salir --> EsperarVestíbulo
+    EsperarVestíbulo --> Entrar: La lámpara es recogida
+    Entrar --> VerEspectáculo
+   
+```
+
 ```mermaid
 stateDiagram
     [*] --> Inicio
