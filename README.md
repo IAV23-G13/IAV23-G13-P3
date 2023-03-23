@@ -15,67 +15,24 @@ Se parte de un proyecto base de Unity 2021 proporcionado por el profesor y dispo
 
 Consiste en un fantasma con un behaviour tree bastante complejo con las clases vacias, el publico con un script sencillo para saber cuando la lampara correspondiente se ha caido y cuando se vuelve a encender, un jugador con los controles basicos utilizando el nav mesh agent y se controla con el teclado, y por ultimo una cantante con una maquina de estados sencilla en la que puede estar cantando, descansando en las bambalinas o secuestrada por el fantasma.
 
+El mapa tiene las siguientes zonas:
+- Patio de butacas
+- Vestibulo
+- Escenario
+- Bambalinas
+- Palco Oeste
+- Palco Este
+- Sotano Oeste
+- Sotano Este
+- Celda
+- Sotano Norte
+- Sala de Musica
+
 ## Diseño de la solución
 
 Lo que vamos a realizar para resolver esta práctica es...
 
-El pseudocódigo del algoritmo de llegada utilizado es:
-```
-class Arrive:
-    character: Kinematic
-    target: Kinematic
 
-    maxAcceleration: float
-    maxSpeed: float
-
-    # The radius for arriving at the target.
-    targetRadius: float
-
-    # The radius for beginning to slow down.
-    slowRadius: float
-
-    # The time over which to achieve target speed.
-    timeToTarget: float = 0.1
-
-    function getSteering() -> SteeringOutput:
-        result = new SteeringOutput()
-
-        # Get the direction to the target.
-        direction = target.position - character.position
-        distance = direction.length()
-
-        # Check if we are there, return no steering.
-        if distance < targetRadius:
-            return null
-
-        # If we are outside the slowRadius, then move at max speed.
-        if distance > slowRadius:
-            targetSpeed = maxSpeed
-        # Otherwise calculate a scaled speed.
-        else:
-            targetSpeed = maxSpeed * distance / slowRadius
-
-        # The target velocity combines speed and direction.
-         targetVelocity = direction
-        targetVelocity.normalize()
-        targetVelocity *= targetSpeed
-
-        # Acceleration tries to get to the target velocity.
-        result.linear = targetVelocity - character.velocity
-        result.linear /= timeToTarget
-
-        # Check if the acceleration is too fast.
-        if result.linear.length() > maxAcceleration:
-            result.linear.normalize()
-            result.linear *= maxAcceleration
-
-        result.angular = 0
-        return result
-```
-
-El pseudocódigo del algoritmo de movimiento de huida es...
-
-También es posible mostrar diagramas...
 
 ![diagram](./Docs/diagrama.png)
 
@@ -95,8 +52,7 @@ Para dibujar espacios de coordenadas 2D con puntos y vectores, se podría incrus
 
 ## Pruebas y métricas
 
-Plan de pruebas dividido por características (C1, C2 y C3 serían las 3 pruebas que se han realizado de la característica C)
-- [Vídeo con la batería de pruebas](https://youtu.be/xxxxx)
+Ni una de momento.
 
 ## Ampliaciones
 
@@ -110,14 +66,18 @@ Las tareas se han realizado y el esfuerzo ha sido repartido entre los autores. E
 
 | Estado  |  Tarea  |  Fecha  |  
 |:-:|:--|:-:|
-| ✔ | Diseño: Primer borrador | 2-12-2022 |
-| ✔ | Característica A: Nosequé | 11-12-2022 |
-| ✔ | Característica B: Nosecuentos| 12-12-2022 |
-|   | ... | |
+| ✔ | Diseño: Primer borrador | 23-03-2023 |
+| :x: | Característica A: Mundo virtual, movimiento e interaccion con entorno | ... |
+| :x: | Característica B: Logica del público| ... |
+| :x: | Característica C: Maquina de estados cantante| ... |
+| :x: | Característica D: Arbol de comportamiento fantasma| ... |
+| :x: | Característica E: Sistema gestion sensorial fantasma| ... |
 |  | OPCIONAL |  |
-| ✔ | Generador pseudoaleatorio | 3-12-2022 |
-| :x: | Menú | 3-12-2022 |
-| :x: | HUD | 12-12-2022 |
+| :x: | Escenario complejo, portales | ... |
+| :x: | Escenario mecanismos complejos | ... |
+| :x: | Fantasma mas inteligente | ... |
+| :x: | Mejor gestion sensorial | ... |
+| :x: | Más personajes | ... |
 
 ## Referencias
 
