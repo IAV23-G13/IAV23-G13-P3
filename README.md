@@ -34,7 +34,11 @@ Lo que vamos a realizar para resolver esta práctica es completar todos los scri
 
 También habrá que completar los scripts que utiliza el árbol de comportamiento del fantasma para que tenga el comportamiento pedido
 
-La cantante le queda por implementar los scripts que definen sus comportamientos que estan definidos por una máquina de estados
+
+
+![diagram](./Docs/diagrama.png)
+
+Mejor que insertando imágenes, se puede usar Mermaid:
 
 Público:
 ```mermaid
@@ -44,6 +48,22 @@ stateDiagram
     Salir --> EsperarVestíbulo
     EsperarVestíbulo --> Entrar: La lámpara es recogida
     Entrar --> VerEspectáculo
+   
+```
+
+Cantante:
+```mermaid
+stateDiagram
+    
+    Cantar --> Bambalinas 
+    Bambalinas --> Cantar 
+    Cantar --> Llevada : El fantasma la rapta 
+    Bambalinas --> Llevada : El fantasma la rapta
+    Llevada --> Volver : El fantasma/vizconde la suelta en zona reconocible
+    Llevada --> Desorientada : El fantasma/vizconde la suelta en zona no reconocible
+    Desorientada --> Llevada : El fantasma/vizconde la recoge
+    Volver --> Cantar : Si estaba cantando
+    Volver --> Bambalinas : Si no estaba cantando
    
 ```
 
@@ -65,7 +85,9 @@ Ni una de momento.
 
 ## Ampliaciones
 
-Se han realizado las siguientes ampliaciones :trollface:
+Se han realizado las siguientes ampliaciones
+
+- Los obstáculos del escenario se colocan...
 
 ## Producción
 
