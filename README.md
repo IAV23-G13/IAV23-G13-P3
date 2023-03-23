@@ -30,7 +30,9 @@ El mapa tiene las siguientes zonas:
 
 ## Diseño de la solución
 
-Lo que vamos a realizar para resolver esta práctica es...
+Lo que vamos a realizar para resolver esta práctica es completar todos los scripts que hay en el proyecto sin completar, como el comportamiento del público para que huya cuand cae la lámpara correspondiente, y vuelva cuando la lámpara se encienda.
+
+También habrá que completar los scripts que utiliza el árbol de comportamiento del fantasma para que tenga el comportamiento pedido
 
 
 
