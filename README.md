@@ -1,21 +1,19 @@
 # IAV - Base para la Práctica 1
 
 ## Autores
-- Nombre completo (Usuario GitHub)
-- Nombre completo (Usuario GitHub)
-- Nombre completo (Usuario GitHub)
+- Javier Villegas Montelongo ([Yavi123](https://github.com/Yavi123))
+- Gonzalo Fernández Moreno ([GonzaloFdezMoreno](https://github.com/GonzaloFdezMoreno))
+- Enrique Juan Gamboa ([ivo_hr](https://github.com/ivo-hr))
 
 ## Propuesta
-Este proyecto es una práctica de la asignatura de Inteligencia Artificial para Videojuegos del Grado en Desarrollo de Videojuegos de la UCM, cuyo enunciado original es este: [Plaga de Ratas](https://narratech.com/es/inteligencia-artificial-para-videojuegos/percepcion-y-movimiento/plaga-de-ratas/).
+Este proyecto es una práctica de la asignatura de Inteligencia Artificial para Videojuegos del Grado en Desarrollo de Videojuegos de la UCM, cuyo enunciado original es este: [Historias de fantasmas](https://github.com/Narratech/IAV-Decision).
 
-Esta práctica consiste en... 
-(Explicación breve de que el avatar del jugador será el **flautista**, que hay **ratas** con un cierto comportamiento, etc.)
+La practica consiste en desarrollar un prototipo de IA para Videojuegos, dentro de un entorno virtual que represente la ópera de París, con un agente inteligente (el fantasma) que decide, se mueve y actúa según lo que encuentra en sus diferentes estancias, otros agentes más simples como la cantante y el público, y un avatar, el vizconde -némesis del fantasma-, controlado por el jugador.
 
 ## Punto de partida
-Se parte de un proyecto base de Unity 2021 proporcionado por el profesor y disponible en este repositorio: [IAV-Movimiento](https://github.com/Narratech/IAV-Movimiento)
+Se parte de un proyecto base de Unity 2021 proporcionado por el profesor y disponible en este repositorio: [IAV-Decision](https://github.com/Narratech/IAV-Decision).
 
-Consiste en... 
-(Explicación detallada de las clases y los métodos ya implementados)
+Consiste en un fantasma con un behaviour tree bastante complejo con las clases vacias, el publico con un script sencillo para saber cuando la lampara correspondiente se ha caido y cuando se vuelve a encender, un jugador con los controles basicos utilizando el nav mesh agent y se controla con el teclado, y por ultimo una cantante con una maquina de estados sencilla en la que puede estar cantando, descansando en las bambalinas o secuestrada por el fantasma.
 
 ## Diseño de la solución
 
