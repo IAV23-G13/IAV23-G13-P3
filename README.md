@@ -34,11 +34,7 @@ Lo que vamos a realizar para resolver esta práctica es completar todos los scri
 
 También habrá que completar los scripts que utiliza el árbol de comportamiento del fantasma para que tenga el comportamiento pedido
 
-
-
-![diagram](./Docs/diagrama.png)
-
-Mejor que insertando imágenes, se puede usar Mermaid:
+La cantante le queda por implementar los scripts que definen sus comportamientos que estan definidos por una máquina de estados
 
 Público:
 ```mermaid
@@ -69,9 +65,7 @@ Ni una de momento.
 
 ## Ampliaciones
 
-Se han realizado las siguientes ampliaciones
-
-- Los obstáculos del escenario se colocan...
+Se han realizado las siguientes ampliaciones :trollface:
 
 ## Producción
 
