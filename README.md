@@ -1,4 +1,4 @@
-# IAV - Base para la Práctica 1
+# IAV - Práctica 3
 
 ## Autores
 - Javier Villegas Montelongo ([Yavi123](https://github.com/Yavi123))
@@ -62,15 +62,18 @@ stateDiagram
     Volver --> Bambalinas : Si no estaba cantando
    
 ```
+Fantasma:
 
 ```mermaid
 stateDiagram
-    [*] --> Inicio
-    Inicio --> Juego : Pulsar 'Jugar'
-    Juego --> Muerte : Tocado por el Enemigo
-    Juego --> Victoria : Coger el Ladrillo Dorado
-    Muerte --> Inicio
-    Victoria --> Inicio
+
+    Buscar --> TirarLampara : Hay publico
+    TirarLampara --> Capturar : Se va el publico
+    Buscar --> Capturar : No hay publico
+    Capturar --> LlevarCelda 
+    LlevarCelda --> CerrarCelda : Llega a la celda
+    LlevarCelda --> Buscar : El vizconde la salva
+    CerrarCelda --> Buscar : El vizconde la salva
 ```
 
 Para dibujar espacios de coordenadas 2D con puntos y vectores, se podría incrustar una imagen de Google Draw, o intentar incrustarlo en el repositorio también con Mermaid. 
