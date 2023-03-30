@@ -9,15 +9,20 @@ using UnityEngine.AI;
 
 public class Publico : MonoBehaviour
 {
-    //int lucesEncendidas = 2;
+    int lucesEncendidas = 2;
     bool miLuzEncendida;
     bool sentado = true;
 
-    GameObject luzAsociada;
+    Vector3 butaca;
+
+    [SerializeField]
+    Transform vestibuloPos;
+
     private void Start()
     {
-        //lucesEncendidas = 2;
+        lucesEncendidas = 2;
         sentado = true;
+        butaca = transform.position;
     }
 
     public void LateUpdate()
@@ -40,16 +45,18 @@ public class Publico : MonoBehaviour
     {
         miLuzEncendida = false;
         sentado = false;
-        //lucesEncendidas--;
-        //sentado = lucesEncendidas == 2;
+        lucesEncendidas--;
+        sentado = lucesEncendidas == 2;
+        GetComponent<NavMeshAgent>().SetDestination(vestibuloPos.position);
     }
-    //se llama cuando el fantasma o el vizconde desactivan o activan las luces
+    // se llama cuando el fantasma o el vizconde desactivan o activan las luces
     public void enciendeLuz()
     {
         miLuzEncendida = true;
         sentado = true;
-        // lucesEncendidas++;
-        //sentado = lucesEncendidas == 2;
+        lucesEncendidas++;
+        sentado = lucesEncendidas == 2;
+        GetComponent<NavMeshAgent>().SetDestination(butaca);
     }
 
 }

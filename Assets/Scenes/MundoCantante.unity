@@ -374,8 +374,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6276498}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.54, y: 0, z: -48.18}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.539999, y: 0, z: -48.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2757,6 +2757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bc9511581510e4cb6c120ffaa7e95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vestibuloPos: {fileID: 29804946}
 --- !u!136 &258457289
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3890,6 +3891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bc9511581510e4cb6c120ffaa7e95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vestibuloPos: {fileID: 2047312472}
 --- !u!136 &406756856
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5393,6 +5395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bc9511581510e4cb6c120ffaa7e95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vestibuloPos: {fileID: 489659622}
 --- !u!136 &565968664
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6442,6 +6445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bc9511581510e4cb6c120ffaa7e95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vestibuloPos: {fileID: 1109291995}
 --- !u!136 &697826483
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7418,6 +7422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bc9511581510e4cb6c120ffaa7e95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vestibuloPos: {fileID: 386150}
 --- !u!136 &825326284
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8122,6 +8127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bc9511581510e4cb6c120ffaa7e95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vestibuloPos: {fileID: 637593797}
 --- !u!136 &976104761
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11466,6 +11472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bc9511581510e4cb6c120ffaa7e95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vestibuloPos: {fileID: 1812221561}
 --- !u!136 &1293266432
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -15958,6 +15965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bc9511581510e4cb6c120ffaa7e95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vestibuloPos: {fileID: 6276499}
 --- !u!136 &2009794729
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16956,8 +16964,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.4
-  gizmoViewMode: 0
-  showBehaviorDesignerGizmo: 0
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!4 &2536986899609911509
 Transform:
   m_ObjectHideFlags: 0
