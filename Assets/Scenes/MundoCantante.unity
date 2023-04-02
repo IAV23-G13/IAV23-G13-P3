@@ -16798,6 +16798,7 @@ GameObject:
   - component: {fileID: 473146498}
   - component: {fileID: 373871681117018881}
   - component: {fileID: 373871681117018880}
+  - component: {fileID: 373871681117018882}
   m_Layer: 0
   m_Name: Cantante
   m_TagString: Cantante
@@ -16912,6 +16913,33 @@ MonoBehaviour:
   _data:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
+--- !u!114 &373871681117018882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373871681117018864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda1dafb473ee2d47acfd3301f82447c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiempoDeCanto: 0
+  tiempoDeDescanso: 0
+  capturada: 0
+  anguloVistaHorizontal: 0
+  distanciaVista: 20
+  objetivo: {fileID: 0}
+  tiempoDeMerodeo: 0
+  tiempoComienzoMerodeo: 0
+  distanciaDeMerodeo: 16
+  cantando: 0
+  Escenario: {fileID: 0}
+  Bambalinas: {fileID: 0}
+  bb: {fileID: 2002151600}
+  fantasma: {fileID: 2536986899609911519}
+  vizconde: {fileID: 1908876747}
 --- !u!114 &2536986899609911508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16964,8 +16992,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.4
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!4 &2536986899609911509
 Transform:
   m_ObjectHideFlags: 0
