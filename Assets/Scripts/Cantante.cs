@@ -45,6 +45,7 @@ public class Cantante : MonoBehaviour
 
     //para seguir al fantasma o al vizconde
     public GameObject fantasma;
+    public GameObject vizconde;
 
     public void Awake()
     {
@@ -75,20 +76,29 @@ public class Cantante : MonoBehaviour
     public bool TerminaCantar()
     {
         // IMPLEMENTAR
-        return true;
+        if (tiempoComienzoCanto > 100)
+        {
+            return true;
+        }
+        else return false;
     }
 
     // Comienza a descansar, reseteando el temporizador
     public void Descansar()
     {
         // IMPLEMENTAR
+        cantando = false;
+        tiempoComienzoDescanso = 0;
     }
 
     // Comprueba si tiene que dejar de descansar
     public bool TerminaDescansar()
     {
         // IMPLEMENTAR
-        return true;
+        if(tiempoComienzoDescanso < 100) {
+            return false;
+        }
+        else return true;
     }
 
     // Comprueba si se encuentra en la celda
@@ -109,6 +119,8 @@ public class Cantante : MonoBehaviour
     public bool Scan()
     {
         // IMPLEMENTAR
+
+        //usar lo mismo que con el minotaruro
         return true;
     }
 
@@ -127,27 +139,35 @@ public class Cantante : MonoBehaviour
     public bool GetCapturada()
     {
         // IMPLEMENTAR
-        return true;
+        return capturada;
     }
 
     public void setCapturada(bool cap)
     {
+
         // IMPLEMENTAR
+        capturada = true;
     }
 
     public GameObject sigueFantasma()
     {
         // IMPLEMENTAR
+        nuevoObjetivo(fantasma);
+        //vector fantasma-cantante
         return null;
     }
 
     public void sigueVizconde()
     {
         // IMPLEMENTAR
+        nuevoObjetivo(vizconde);
+        //vector vizconde-cantante
     }
 
     private void nuevoObjetivo(GameObject obj)
     {
         // IMPLEMENTAR
+
+        objetivo = obj.transform;
     }
 }
