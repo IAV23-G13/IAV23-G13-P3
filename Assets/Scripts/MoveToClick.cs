@@ -23,11 +23,14 @@ public class MoveToClick : MonoBehaviour
 
     public Transform pointer;
 
+    NavMeshAgent agent;
+
     // Start is called before the first frame update
     void Start()
     {
         obj = new GameObject();
         obj.transform.position = transform.position;
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -40,8 +43,8 @@ public class MoveToClick : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("PointerLayer")))
             {
                 obj.transform.position = hit.point;
-                if(GetComponent<NavMeshAgent>().enabled){
-                    GetComponent<NavMeshAgent>().SetDestination(obj.transform.position);
+                if(agent.enabled){
+                    agent.SetDestination(obj.transform.position);
                     pointer.gameObject.SetActive(true);
                     pointer.position = hit.point + new Vector3(0, (float)0.5, 0);
                 }

@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class Cantante : MonoBehaviour
 {
@@ -63,11 +66,29 @@ public class Cantante : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(agente.velocity.normalized);
         }
+        tiempoComienzoCanto += Time.deltaTime;
+        tiempoComienzoDescanso += Time.deltaTime;
+
+        if (cantando)
+        {
+            if (TerminaCantar())
+            {
+                Descansar();
+            }
+        }
+        else
+        {
+            if (TerminaDescansar())
+            {
+                Cantar();
+            }
+        }
     }
 
     // Comienza a cantar, reseteando el temporizador
     public void Cantar()
     {
+        GetComponent<StateMachine>().TriggerUnityEvent("endRest");
         tiempoComienzoCanto = 0;
         cantando = true;
     }
@@ -76,7 +97,7 @@ public class Cantante : MonoBehaviour
     public bool TerminaCantar()
     {
         // IMPLEMENTAR
-        if (tiempoComienzoCanto > 100)
+        if (tiempoComienzoCanto > tiempoDeCanto)
         {
             return true;
         }
@@ -87,6 +108,7 @@ public class Cantante : MonoBehaviour
     public void Descansar()
     {
         // IMPLEMENTAR
+        GetComponent<StateMachine>().TriggerUnityEvent("endSinging");
         cantando = false;
         tiempoComienzoDescanso = 0;
     }
@@ -95,7 +117,8 @@ public class Cantante : MonoBehaviour
     public bool TerminaDescansar()
     {
         // IMPLEMENTAR
-        if(tiempoComienzoDescanso < 100) {
+        if (tiempoComienzoDescanso < tiempoDeDescanso)
+        {
             return false;
         }
         else return true;
@@ -125,7 +148,7 @@ public class Cantante : MonoBehaviour
     }
 
     // Genera una posicion aleatoria a cierta distancia dentro de las areas permitidas
-    private Vector3 RandomNavSphere(float distance) 
+    private Vector3 RandomNavSphere(float distance)
     {
         // IMPLEMENTAR
         return new Vector3();
@@ -146,7 +169,11 @@ public class Cantante : MonoBehaviour
     {
 
         // IMPLEMENTAR
-        capturada = true;
+        if (cap)
+        {
+            GetComponent<StateMachine>().TriggerUnityEvent("capturada");
+        }
+        capturada = cap;
     }
 
     public GameObject sigueFantasma()
