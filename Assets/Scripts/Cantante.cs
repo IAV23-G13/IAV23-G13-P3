@@ -70,6 +70,7 @@ public class Cantante : MonoBehaviour
         }
         tiempoComienzoCanto += Time.deltaTime;
         tiempoComienzoDescanso += Time.deltaTime;
+        tiempoComienzoMerodeo += Time.deltaTime;
 
         if (cantando)
         {
@@ -160,6 +161,8 @@ public class Cantante : MonoBehaviour
     public void IntentaMerodear()
     {
         // IMPLEMENTAR
+        tiempoComienzoMerodeo = 0;
+        agente.SetDestination(RandomNavSphere(distanciaDeMerodeo));
     }
     public bool GetCapturada()
     {
