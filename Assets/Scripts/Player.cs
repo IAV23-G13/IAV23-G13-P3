@@ -104,13 +104,11 @@ public class Player : MonoBehaviour
             var cantante = cantantePruebas.GetComponent<Cantante>();
             if (!cantante.GetCapturada())
             {
-                cantante.objetivo = this.transform;
-                cantante.setCapturada(true);
+                cantante.capturadaPor(this.transform);
             }
             else
             {
-                cantante.objetivo = null;
-                cantante.setCapturada(false);
+                cantante.capturadaPor();
             }
         }
     }

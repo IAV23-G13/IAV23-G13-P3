@@ -36,6 +36,8 @@ public class Cantante : MonoBehaviour
     // Si canta o no
     public bool cantando = false;
 
+    bool conozcoElSitio = true;
+
     // Componente cacheado NavMeshAgent
     private NavMeshAgent agente;
 
@@ -135,7 +137,7 @@ public class Cantante : MonoBehaviour
     public bool ConozcoEsteSitio()
     {
         // IMPLEMENTAR
-        return true;
+        return conozcoElSitio;
     }
 
     //Mira si ve al vizconde con un angulo de vision y una distancia maxima
@@ -164,37 +166,45 @@ public class Cantante : MonoBehaviour
         // IMPLEMENTAR
         return capturada;
     }
-
-    public void setCapturada(bool cap)
+    public void setCapturada(bool odio)
     {
-
-        // IMPLEMENTAR
-        if (cap)
-        {
-            GetComponent<StateMachine>().TriggerUnityEvent("capturada");
-        }
-        capturada = cap;
-    }
-
-    public GameObject sigueFantasma()
-    {
-        // IMPLEMENTAR
-        nuevoObjetivo(fantasma);
-        //vector fantasma-cantante
-        return null;
     }
 
     public void sigueVizconde()
     {
-        // IMPLEMENTAR
-        nuevoObjetivo(vizconde);
-        //vector vizconde-cantante
+
     }
 
-    private void nuevoObjetivo(GameObject obj)
+    public GameObject sigueFantasma()
     {
-        // IMPLEMENTAR
+        return null;
+    }
 
-        objetivo = obj.transform;
+    public void capturadaPor(Transform obj = null)
+    {
+        if (obj == null) 
+        {
+            objetivo = null;
+            capturada = false;
+            GetComponent<StateMachine>().TriggerUnityEvent("desCapturada");
+        }
+        else
+        {
+            objetivo = obj;
+            capturada = true;
+            GetComponent<StateMachine>().TriggerUnityEvent("capturada");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.TryGetComponent<SotanosTrigger>(out var _)) { return; }
+        conozcoElSitio = false;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.TryGetComponent<SotanosTrigger>(out var _)) { return; }
+        conozcoElSitio = true;
     }
 }
