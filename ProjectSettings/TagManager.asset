@@ -10,6 +10,7 @@ TagManager:
   - Palanca
   - Puerta
   - Cantante
+  - MusicRoom
   layers:
   - Default
   - TransparentFX

@@ -19,17 +19,30 @@ using UnityEngine.AI;
 
 public class GhostReturnAction : Action
 {
-    NavMeshAgent agent;
-    GameObject musicRoom;
-
+    SharedTransform MusicRoom;
+    SharedGameObject Ghost;
+    
     public override void OnAwake()
     {
         // IMPLEMENTAR
+        musicRoom = GetVariable("MusicRoom") as SharedGameObject;
+        ghost = GetVariable("Ghost") as SharedGameObject;
+        ghost.agent.SetDestination(musicRoom.position);
     }
 
     public override TaskStatus OnUpdate()
     {
         // IMPLEMENTAR
-        return TaskStatus.Success;
+        return TaskStatus.Failure;
+    }
+
+    OnDestinationReached()
+    {
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            return TaskStatus.Success;
+        }
+
+        agent.
     }
 }
