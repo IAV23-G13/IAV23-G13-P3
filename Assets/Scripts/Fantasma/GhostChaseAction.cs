@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
+using Unity.VisualScripting;
+using BehaviorDesigner.Runtime;
 
 /*
  * Accion de seguir a la cantante, cuando la alcanza devuelve Success
@@ -20,16 +22,30 @@ using UnityEngine.AI;
 public class GhostChaseAction : Action
 {
     NavMeshAgent agent;
-    GameObject singer;
+
+    [SerializeField]
+    SharedTransform singer;
 
     public override void OnAwake()
     {
         // IMPLEMENTAR 
+        agent = GetComponent<NavMeshAgent>();
+        singer = Owner.GetVariable("cantante") as SharedTransform;
     }
 
     public override TaskStatus OnUpdate()
     {
-        // IMPLEMENTAR
-        return TaskStatus.Success;
+        // 
+        agent.SetDestination(singer.Value.position);
+
+        if (Vector3.Distance(transform.position, singer.Value.position) < 2f)
+        {
+            singer.Value.GetComponent<Cantante>().capturadaPor(this.transform);
+            return TaskStatus.Success;
+        }
+        else
+        {
+            return TaskStatus.Failure;
+        }
     }
 }
