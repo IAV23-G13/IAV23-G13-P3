@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
+using BehaviorDesigner.Runtime;
 
 /*
  * Condicion de si la cantante esta encarcelada
@@ -18,18 +19,20 @@ using BehaviorDesigner.Runtime.Tasks;
 
 public class CapturadaCondition : Conditional
 {
-    Cantante cantante;
+    SharedGameObject cantante;
 
     public override void OnAwake()
     {
         // IMPLEMENTAR
-        cantante= GameObject.FindGameObjectWithTag("Cantante").GetComponent<Cantante>();
+        cantante= Owner.GetVariable("Piano") as SharedGameObject;
     }
 
     public override TaskStatus OnUpdate()
     {
         // IMPLEMENTAR
-        if(cantante.capturada)
+        GameObject cant = cantante.Value as GameObject;
+
+        if (cant.GetComponent<Cantante>().capturada)
             return TaskStatus.Success;
         else 
             return TaskStatus.Failure;

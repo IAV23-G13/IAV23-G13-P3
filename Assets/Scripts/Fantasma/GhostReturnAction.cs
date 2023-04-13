@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
+using BehaviorDesigner.Runtime;
 
 /*
  * Accion de ir a la sala de musica, cuando llega devuelve Success
@@ -19,8 +20,8 @@ using UnityEngine.AI;
 
 public class GhostReturnAction : Action
 {
-    SharedTransform MusicRoom;
-    SharedGameObject Ghost;
+    SharedTransform musicRoom;
+    SharedGameObject ghost;
     
     public override void OnAwake()
     {
@@ -43,6 +44,6 @@ public class GhostReturnAction : Action
             return TaskStatus.Success;
         }
 
-        agent.
+        //agent.
     }
 }

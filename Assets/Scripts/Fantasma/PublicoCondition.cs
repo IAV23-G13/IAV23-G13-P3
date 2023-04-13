@@ -7,6 +7,7 @@
    Contacto: email@federicopeinado.com
 */
 
+using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,22 +15,23 @@ using UnityEngine;
 
 public class PublicoCondition : Conditional
 {
-    GameBlackboard blackboard;
+    //GameBlackboard blackboard;
+    SharedGameObject blackboard;
 
     [SerializeField] bool publicoWest;
     [SerializeField] bool publicoEast;
 
     public override void OnAwake()
     {
-        blackboard = GameObject.FindGameObjectWithTag("Blackboard").GetComponent<GameBlackboard>();
-        publicoEast = true;
-        publicoWest = true;
-        
+        //blackboard = GameObject.FindGameObjectWithTag("Blackboard").GetComponent<GameBlackboard>();
+       blackboard = Owner.GetVariable("BlackBoard") as SharedGameObject;
+
     }
 
     public override TaskStatus OnUpdate()
     {
-        if (blackboard.eastLever.gameObject.GetComponentInChildren<ControlPalanca>().caido)
+        GameObject bb = blackboard.Value as GameObject;
+        if (bb.GetComponent<GameBlackboard>().eastLever.gameObject.GetComponentInChildren<ControlPalanca>().caido)
         {
             publicoEast = false;
         }
@@ -38,7 +40,7 @@ public class PublicoCondition : Conditional
             publicoEast = true;
         }
 
-        if (blackboard.westLever.gameObject.GetComponentInChildren<ControlPalanca>().caido)
+        if (bb.GetComponent<GameBlackboard>().westLever.gameObject.GetComponentInChildren<ControlPalanca>().caido)
         {
             publicoWest = false;
         }
