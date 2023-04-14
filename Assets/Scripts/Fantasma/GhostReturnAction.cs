@@ -26,9 +26,9 @@ public class GhostReturnAction : Action
     public override void OnAwake()
     {
         // IMPLEMENTAR
-        musicRoom = GetVariable("MusicRoom") as SharedGameObject;
-        ghost = GetVariable("Ghost") as SharedGameObject;
-        ghost.agent.SetDestination(musicRoom.position);
+        //musicRoom = GetVariable("MusicRoom") as SharedGameObject;
+        //ghost = GetVariable("Ghost") as SharedGameObject;
+        //ghost.agent.SetDestination(musicRoom.position);
     }
 
     public override TaskStatus OnUpdate()
@@ -37,13 +37,13 @@ public class GhostReturnAction : Action
         return TaskStatus.Failure;
     }
 
-    OnDestinationReached()
-    {
-        if (agent.remainingDistance <= agent.stoppingDistance)
-        {
-            return TaskStatus.Success;
-        }
+    //OnDestinationReached()
+    //{
+    //    if (agent.remainingDistance <= agent.stoppingDistance)
+    //    {
+    //        return TaskStatus.Success;
+    //    }
 
         //agent.
-    }
+    //}
 }

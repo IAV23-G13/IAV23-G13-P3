@@ -24,7 +24,7 @@ public class CapturadaCondition : Conditional
     public override void OnAwake()
     {
         // IMPLEMENTAR
-        cantante= Owner.GetVariable("Piano") as SharedGameObject;
+        cantante= Owner.GetVariable("Cantante") as SharedGameObject;
     }
 
     public override TaskStatus OnUpdate()
