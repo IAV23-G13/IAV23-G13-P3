@@ -14,6 +14,7 @@ using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
 using Unity.VisualScripting;
 using System.Threading;
+using BehaviorDesigner.Runtime;
 
 /*
  * Devuelve Success cuando la cantante es sobre el palco
@@ -22,18 +23,18 @@ using System.Threading;
 
 public class VizcondeChocaCondition : Conditional
 {
-    GameObject Vizconde;
-    NavMeshAgent agent;
+    SharedGameObject Vizconde;
+   // NavMeshAgent agent;
 
-    CapsuleCollider cc;
-    CapsuleCollider cc2;
+    //CapsuleCollider cc;
+    //CapsuleCollider cc2;
     bool golpeado = false;
 
     public override void OnAwake()
     {
-        Vizconde= GameObject.FindGameObjectWithTag("Player").GetComponent<GameObject>();
-        cc = GameObject.FindGameObjectWithTag("Ghost").GetComponent<CapsuleCollider>();
-        cc2 = Vizconde.GetComponent<CapsuleCollider>();
+        Vizconde = Owner.GetVariable("Player") as SharedGameObject;
+        //cc = GameObject.FindGameObjectWithTag("Ghost").GetComponent<CapsuleCollider>();
+        //cc2 = Vizconde.GetComponent<CapsuleCollider>();
         // IMPLEMENTAR 
 
     }
@@ -42,10 +43,24 @@ public class VizcondeChocaCondition : Conditional
     {
         //hacerlo con el on coliision directamente hay un ejemplo en el nodo del arbol de condicion colision
         // IMPLEMENTAR
-        return TaskStatus.Success;
+        if(golpeado)
+            return TaskStatus.Success;
+        else
+            return TaskStatus.Failure;
 
     }
 
-   
+    public override void OnCollisionEnter(Collision collision)
+    {
+        GameObject player=Vizconde.Value as GameObject;
+        if (collision.gameObject==player)
+        {
+            golpeado = true;
+        }
+    }
 
+    public override void OnEnd()
+    {
+        golpeado = false;
+    }
 }
