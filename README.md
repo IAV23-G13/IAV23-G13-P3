@@ -80,7 +80,7 @@ Para dibujar espacios de coordenadas 2D con puntos y vectores, se podría incrus
 
 ## Pruebas y métricas
 
-Ni una de momento.
+- [Vídeo con la batería de pruebas](https://youtu.be/7uuU-owzgjM)
 
 ## Ampliaciones
 
