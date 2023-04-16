@@ -93,11 +93,11 @@ Las tareas se han realizado y el esfuerzo ha sido repartido entre los autores. E
 | Estado  |  Tarea  |  Fecha  |  
 |:-:|:--|:-:|
 | ✔ | Diseño: Primer borrador | 23-03-2023 |
-| :x: | Característica A: Mundo virtual, movimiento e interaccion con entorno | ... |
-| :x: | Característica B: Logica del público| ... |
-| :x: | Característica C: Maquina de estados cantante| ... |
-| :x: | Característica D: Arbol de comportamiento fantasma| ... |
-| :x: | Característica E: Sistema gestion sensorial fantasma| ... |
+| ✔ | Característica A: Mundo virtual, movimiento e interaccion con entorno | ... |
+| ✔ | Característica B: Logica del público| ... |
+| ✔ | Característica C: Maquina de estados cantante| ... |
+| ✔ | Característica D: Arbol de comportamiento fantasma| ... |
+| ✔ | Característica E: Sistema gestion sensorial fantasma| ... |
 |  | OPCIONAL |  |
 | :x: | Escenario complejo, portales | ... |
 | :x: | Escenario mecanismos complejos | ... |
