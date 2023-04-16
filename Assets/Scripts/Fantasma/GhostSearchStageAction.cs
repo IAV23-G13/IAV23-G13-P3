@@ -7,13 +7,10 @@
    Contacto: email@federicopeinado.com
 */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
 using BehaviorDesigner.Runtime;
-using UnityEditor.Experimental.GraphView;
 
 /*
  * Accion de ir al escenario, cuando llega devuelve Success

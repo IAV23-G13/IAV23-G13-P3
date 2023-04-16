@@ -7,7 +7,6 @@
    Contacto: email@federicopeinado.com
 */
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //se usa para que la camara siga al jugador

@@ -6,9 +6,6 @@
    Autor: Federico Peinado 
    Contacto: email@federicopeinado.com
 */
-using System;
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
 
     /// <summary>

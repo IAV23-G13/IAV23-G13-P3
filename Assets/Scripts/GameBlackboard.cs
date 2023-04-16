@@ -7,10 +7,7 @@
    Contacto: email@federicopeinado.com
 */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI; 
 
 /*
  * Tiene una referencia a todas las variables del mundo necesarias para que otros objetos tengan acceso a estas

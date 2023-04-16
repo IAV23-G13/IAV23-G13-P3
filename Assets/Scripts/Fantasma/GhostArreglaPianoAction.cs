@@ -7,11 +7,8 @@
    Contacto: email@federicopeinado.com
 */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
-using UnityEngine.AI;
 
 
 public class GhostArreglaPianoAction : Action

@@ -7,12 +7,9 @@
    Contacto: email@federicopeinado.com
 */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
-using BehaviorDesigner.Runtime;
 
 /*
  * Accion de ir a la sala de musica, cuando llega devuelve Success

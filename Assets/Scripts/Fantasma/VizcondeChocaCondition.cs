@@ -7,13 +7,8 @@
    Contacto: email@federicopeinado.com
 */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
-using UnityEngine.AI;
-using Unity.VisualScripting;
-using System.Threading;
 using BehaviorDesigner.Runtime;
 
 /*
