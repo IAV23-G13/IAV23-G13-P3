@@ -20,21 +20,25 @@ using BehaviorDesigner.Runtime;
 
 public class GhostReturnAction : Action
 {
-    SharedTransform musicRoom;
-    SharedGameObject ghost;
-    
+    Transform musicRoom;
+    NavMeshAgent ghost;
     public override void OnAwake()
     {
         // IMPLEMENTAR
-        //musicRoom = GetVariable("MusicRoom") as SharedGameObject;
-        //ghost = GetVariable("Ghost") as SharedGameObject;
-        //ghost.agent.SetDestination(musicRoom.position);
+        ghost = GetComponent<NavMeshAgent>();
+        musicRoom = GameObject.FindGameObjectWithTag("MusicRoom").transform;
+        ghost.destination = musicRoom.position;
+        //gameObject.GetComponent<NavMeshAgent>().destination = musicRoom.position;
     }
 
     public override TaskStatus OnUpdate()
     {
         // IMPLEMENTAR
-        return TaskStatus.Failure;
+        //return TaskStatus.Failure;
+
+        if (ghost.remainingDistance <= 2)
+            return TaskStatus.Success;
+        else return TaskStatus.Running; 
     }
 
     //OnDestinationReached()
