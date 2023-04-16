@@ -7,6 +7,8 @@
    Contacto: email@federicopeinado.com
 */
 
+using BehaviorDesigner.Runtime;
+using BehaviorDesigner.Runtime.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +28,7 @@ public class PalancaPuerta : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Cantante>() || other.gameObject.GetComponent<Player>()) return;
+        if (other.gameObject.GetComponent<Cantante>() || other.gameObject.GetComponent<Player>() || other.gameObject.GetComponent<BehaviorDesigner.Runtime.BehaviorTree>()) return;
 
         Interact();
     }

@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
+using BehaviorDesigner.Runtime;
 
 /*
  * Accion de ir al escenario, cuando llega devuelve Success
@@ -20,16 +21,28 @@ using UnityEngine.AI;
 public class GhostSearchStageAction : Action
 {
     NavMeshAgent agent;
-    GameObject stage;
+    Transform stage;
 
     public override void OnAwake()
     {
-        // IMPLEMENTAR
+        // IMPLEMENTAR 
+        agent = GetComponent<NavMeshAgent>();
+        stage = (Owner.GetVariable("escenario") as SharedTransform).Value;
     }
 
     public override TaskStatus OnUpdate()
     {
-        // IMPLEMENTAR
-        return TaskStatus.Success;
+        // 
+        agent.SetDestination(stage.position);
+
+        if (Vector3.Distance(transform.position, stage.position) < 2f)
+        {
+            stage.GetComponent<Cantante>().capturadaPor(this.transform);
+            return TaskStatus.Success;
+        }
+        else
+        {
+            return TaskStatus.Failure;
+        }
     }
 }

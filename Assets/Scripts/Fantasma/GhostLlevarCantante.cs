@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
+using BehaviorDesigner.Runtime;
 
 /*
  * Accion de seguir a la cantante, cuando la alcanza devuelve Success
@@ -22,36 +23,88 @@ public class GhostLlevarCantante : Action
     NavMeshAgent agent;
     NavMeshAgent singerNav;
     GameObject singer;
+    Transform palancaCelda;
 
-    GameObject sotanoNorte;
+    bool gateOpen;
+    bool yendoACelda;
+
+    GameObject celda;
+
+    bool started = false;
 
     public override void OnAwake()
     {
         agent = GetComponent<NavMeshAgent>();
 
-        sotanoNorte = GameObject.FindGameObjectWithTag("Blackboard").GetComponent<GameBlackboard>().basement;
+        celda = GameObject.FindGameObjectWithTag("Blackboard").GetComponent<GameBlackboard>().celda;
         singer = GameObject.FindGameObjectWithTag("Blackboard").GetComponent<GameBlackboard>().singer;
-        singerNav = singer.GetComponent<NavMeshAgent>();        
+        singerNav = singer.GetComponent<NavMeshAgent>();
+
+        gateOpen = (Owner.GetVariable("BlackBoard") as SharedGameObject).Value.GetComponent<GameBlackboard>().gate;
+        palancaCelda = (Owner.GetVariable("palancaCelda") as SharedTransform).Value;
     }
 
     public override TaskStatus OnUpdate()
     {
-        agent.SetDestination(singer.transform.position);
-
-        if (Vector3.SqrMagnitude(transform.position - singer.transform.position) < 1.2f)
+        if (singer.GetComponent<Cantante>().objetivo == transform)
         {
-            agent.SetDestination(transform.position);
-            singer.GetComponent<Cantante>().capturada = true;
+            gateOpen = (Owner.GetVariable("BlackBoard") as SharedGameObject).Value.GetComponent<GameBlackboard>().gate;
 
-            //return TaskStatus.Success;
-            singerNav.enabled = false;
-            singer.transform.position = transform.position + new Vector3(0, 1, 0);
-            singer.transform.SetParent(transform, true);
-            //agent.SetDestination(sotanoNorte.transform.position);
+            if (!started || (agent.destination != celda.transform.position && agent.destination != palancaCelda.position))
+            {
+                if (gateOpen)
+                {
+                    agent.SetDestination(celda.transform.position);
+                    yendoACelda = true;
+                }
+                else
+                {
+                    agent.SetDestination(palancaCelda.position);
+                    yendoACelda = false;
+                }
+                started = true;
+            }
 
-            return TaskStatus.Success;
+            if (yendoACelda && !gateOpen)
+            {
+                agent.SetDestination(palancaCelda.position);
+                yendoACelda = false;
+            }
+            else if (!yendoACelda && gateOpen)
+            {
+                agent.SetDestination(celda.transform.position);
+                yendoACelda = true;
+            }
+
+            if (yendoACelda)
+            {
+                if (Vector3.Distance(transform.position, celda.transform.position) < 2f)
+                {
+                    agent.SetDestination(palancaCelda.position);
+                    yendoACelda = false;
+                    singer.GetComponent<Cantante>().capturadaPor();
+                }
+            }
+            else
+            {
+                if (Vector3.Distance(transform.position, palancaCelda.position) < 2f)
+                {
+                    palancaCelda.GetComponent<PalancaPuerta>().Interact();
+                    agent.SetDestination(celda.transform.position);
+                    yendoACelda = true;
+                }
+            }
         }
-        else return TaskStatus.Running;
+        else
+        {
+            if (Vector3.Distance(transform.position, palancaCelda.position) < 2f)
+            {
+                palancaCelda.GetComponent<PalancaPuerta>().Interact();
+                return TaskStatus.Success;
+            }
+        }
+
+        return TaskStatus.Running;
 
     }
 }

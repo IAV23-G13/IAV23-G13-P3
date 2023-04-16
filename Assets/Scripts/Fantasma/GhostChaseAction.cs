@@ -24,21 +24,21 @@ public class GhostChaseAction : Action
     NavMeshAgent agent;
 
     [SerializeField]
-    SharedTransform singer;
+    SharedGameObject singer;
 
     public override void OnAwake()
     {
         // IMPLEMENTAR 
         agent = GetComponent<NavMeshAgent>();
-        singer = Owner.GetVariable("cantante") as SharedTransform;
+        singer = Owner.GetVariable("Cantante") as SharedGameObject;
     }
 
     public override TaskStatus OnUpdate()
     {
         // 
-        agent.SetDestination(singer.Value.position);
+        agent.SetDestination(singer.Value.transform.position);
 
-        if (Vector3.Distance(transform.position, singer.Value.position) < 2f)
+        if (Vector3.Distance(transform.position, singer.Value.transform.position) < 2f)
         {
             singer.Value.GetComponent<Cantante>().capturadaPor(this.transform);
             return TaskStatus.Success;
